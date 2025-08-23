@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sathya_J — UI/UX Designer & Front‑End Developer</title>
+  <meta name="description" content="Sathya Jayaprakash — UI/UX Designer & Front-End Developer portfolio: story, work, skills, services, and contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#121829cc;
+      --muted:#9aa3b2;
+      --text:#e6eaf2;
+      --brand:#7c4dff; /* electric purple */
+      --brand-2:#00e5ff; /* aqua */
+      --ok:#00d084;
+      --warn:#ffb020;
+      --error:#ff5a5f;
+      --radius:22px;
+      --shadow:0 10px 30px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box}
+    html {scroll-behavior:smooth}
+    body{
+      margin:0; background:radial-gradient(1200px 1200px at 10% 10%, #121829 0%, #0b0f17 60%);
+      color:var(--text); font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; 
+      line-height:1.6; overflow-x:hidden;
+    }
+    /* ---------- Decorative animated background doodles ---------- */
+    .bg-doodles{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden;}
+    .doodle{position:absolute; opacity:.15; filter:drop-shadow(0 6px 24px rgba(124,77,255,.3)); animation:float 16s ease-in-out infinite;}
+    .doodle svg{width:120px; height:120px}
+    .d1{top:6%; left:6%; animation-duration:18s}
+    .d2{top:18%; right:8%; animation-duration:20s}
+    .d3{bottom:14%; left:10%; animation-duration:22s}
+    .d4{bottom:10%; right:6%; animation-duration:24s}
+    .d5{top:50%; left:45%; animation-duration:26s}
+    @keyframes float{ 0%,100%{ transform:translateY(0) rotate(0deg)} 50%{ transform:translateY(-18px) rotate(6deg)} }
+
+    /* ---------- Header ---------- */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(10px); background:linear-gradient(180deg, rgba(11,15,23,.8), rgba(11,15,23,.35)); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content: flex-end; padding:14px 20px;}
+    nav ul{display:flex; gap:20px; list-style:none; padding:0; margin:0; align-items:center;}
+    nav a{display:inline-block; padding:8px 12px; border-radius:12px; color:var(--text); text-decoration:none; font-weight:600; opacity:.9}
+    nav a:hover{background:rgba(255,255,255,.06)}
+    nav a.active{background:linear-gradient(135deg, rgba(124,77,255,.25), rgba(0,229,255,.2)); border:1px solid rgba(255,255,255,.08)}
+    .cta-resume{margin-left:10px; padding:9px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f17; font-weight:800; box-shadow:var(--shadow)}
+
+    /* ---------- Sections ---------- */
+    section{max-width:1200px; margin:0 auto; padding:80px 20px}
+    .grid{display:grid; gap:24px}
+
+    /* ---------- Hero ---------- */
+    .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding-top:64px}
+    
+    .kicker{color:var(--brand-2); font-weight:800; letter-spacing:.2em; text-transform:uppercase; font-size:12px}
+    h1{font-size:clamp(34px, 4.6vw, 54px); line-height:1.15; margin:10px 0 18px}
+    .subtitle{color:var(--muted); font-size:clamp(15px,1.6vw,18px)}
+    .buttons{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap}
+    .btn{border:none; padding:14px 18px; border-radius:16px; font-weight:800; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:10px}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#0b0f17; box-shadow:var(--shadow)}
+    .btn-ghost{background:rgba(255,255,255,.06); color:var(--text); border:1px solid rgba(255,255,255,.08)}
+    .hero-card{background:linear-gradient(145deg, rgba(18,24,41,.9), rgba(18,24,41,.6)); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+
+    /* ---------- Cards & chips ---------- */
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    .chip{display:inline-flex; align-items:center; gap:8px; margin: 4px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.06); border:3px solid rgba(255,255,255,.08); font-size:13px; cursor: pointer; transition: all .25s ease;}
+
+    /* ---------- Timeline ---------- */
+    .timeline{position:relative; padding-left:26px}
+    .timeline:before{content:""; position:absolute; left:8px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--brand),var(--brand-2))}
+    .t-item{margin:0 0 16px 0}
+    .t-role{font-weight:800}
+    .t-meta{color:var(--muted); font-size:14px}
+
+    /* ---------- Skills ---------- */
+    .skills{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .skills ul{margin:8px 0 0 0; padding-left:18px}
+
+    /* ---------- Projects ---------- */
+    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .project{overflow:hidden; position:relative}
+    .project img{width:100%; height:220px; object-fit:cover; border-radius:18px; border:1px solid rgba(255,255,255,.08)}
+    .project .p-info{position:absolute; inset:auto 10px 10px 10px; background:rgba(0,0,0,.5); backdrop-filter:blur(4px); padding:10px 12px; border-radius:14px; font-size:14px}
+
+    /* ---------- Contact ---------- */
+    form{display:grid; gap:12px}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    input, textarea{width:100%; padding:14px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); color:var(--text); font:inherit}
+    textarea{min-height:140px; resize:vertical}
+    .muted{color:var(--muted)}
+
+    /* ---------- Footer ---------- */
+    footer{padding:32px 20px 60px; text-align:center; color:var(--muted)}
+    .social a {
+      color: var(--text);
+      opacity: 0.8;
+      transition: transform 0.2s ease, opacity 0.2s ease;}
+    .social a:hover {
+      opacity: 1;
+      transform: scale(1.2);
+      color: var(--brand-2); /* aqua highlight on hover */}
+
+
+    /* ---------- Utilities ---------- */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr 1fr}
+      .row{grid-template-columns:1fr}
+    }
+    @media (max-width: 560px){
+      nav ul{gap:8px}
+      nav a{padding:8px 10px}
+      .projects{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Animated background with UX doodles: pen, pencil, notepad, ruler, cursor -->
+  <div class="bg-doodles" aria-hidden="true">
+    <div class="doodle d1"> 
+      <!-- Pencil -->
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#7c4dff"/>
+            <stop offset="1" stop-color="#00e5ff"/>
+          </linearGradient>
+        </defs>
+        <path d="M15 85 L35 65 L90 10 L75 5 L20 60 Z" fill="url(#g1)" opacity=".8"/>
+        <path d="M15 85 L30 70 L35 65 L20 80 Z" fill="#ffcc80"/>
+        <circle cx="20" cy="80" r="3" fill="#212121"/>
+      </svg>
+    </div>
+    <div class="doodle d2">
+      <!-- Notepad -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="15" width="64" height="72" rx="10" fill="url(#g1)" opacity=".55"/>
+        <rect x="22" y="25" width="56" height="58" rx="8" fill="#101521" stroke="#5ce1ff" stroke-opacity=".5"/>
+        <line x1="30" y1="38" x2="70" y2="38" stroke="#7c4dff" stroke-opacity=".7"/>
+        <line x1="30" y1="52" x2="70" y2="52" stroke="#7c4dff" stroke-opacity=".5"/>
+        <line x1="30" y1="66" x2="60" y2="66" stroke="#7c4dff" stroke-opacity=".3"/>
+      </svg>
+    </div>
+    <div class="doodle d3">
+      <!-- Pen nib -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 10 L85 45 L50 90 L15 45 Z" fill="url(#g1)" opacity=".6"/>
+        <circle cx="50" cy="50" r="6" fill="#0b0f17" stroke="#e6eaf2" stroke-opacity=".8"/>
+      </svg>
+    </div>
+    <div class="doodle d4">
+      <!-- Ruler -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <rect x="18" y="40" width="64" height="20" rx="6" fill="url(#g1)" opacity=".55"/>
+        <g stroke="#0b0f17" stroke-width="2" opacity=".7">
+          <line x1="24" y1="42" x2="24" y2="58"/>
+          <line x1="32" y1="42" x2="32" y2="58"/>
+          <line x1="40" y1="42" x2="40" y2="58"/>
+          <line x1="48" y1="42" x2="48" y2="58"/>
+          <line x1="56" y1="42" x2="56" y2="58"/>
+          <line x1="64" y1="42" x2="64" y2="58"/>
+          <line x1="72" y1="42" x2="72" y2="58"/>
+        </g>
+      </svg>
+    </div>
+    <div class="doodle d5">
+      <!-- Cursor -->
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 18 L82 50 L58 58 L68 82 Z" fill="url(#g1)" opacity=".6"/>
+      </svg>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav" role="navigation" aria-label="Main">
+      <nav>
+        <ul>
+          <li><a class="nav-link active" href="#start">Start</a></li>
+          <li><a class="nav-link" href="#story">The Story</a></li>
+          <li><a class="nav-link" href="#work">What I’ve Done</a></li>
+          <li><a class="nav-link" href="#contact">Get in Touch</a></li>
+          <li><a class="cta-resume" href="file:///C:/Users/sathy/Downloads/Sathya%20Resume_.pdf" download>Download Resume</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="start"  aria-labelledby="hero-title">
+    <section>
+      <h3 class="kicker">Hello, Hi! I'm Sathya Jayaprakash</h3>
+      <h1 id="hero-title">UI/UX Design + Front‑End Developer — All you need is me!</h1>
+      <p class="subtitle">I bring ideas to life—designing, building, and deploying instantly to meet your needs. <strong>8 months</strong> of hands‑on experience in UI/UX design & developing websites and mobile apps at fast‑paced startups.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#work" aria-label="Jump to work timeline">What I’ve done</a>
+        <a class="btn btn-ghost" href="#contact" aria-label="Jump to contact section">Get in Touch</a>
+        <button class="btn btn-ghost" id="copyEmailBtn" type="button">Copy my email</button>
+      </div>
+      <div class="hero-card" style="margin-top:20px">
+        <span class="chip" title="Figma">Figma</span>
+        <span class="chip" title="Framer">Framer</span>
+        <span class="chip" title="HTML">HTML</span>
+        <span class="chip" title="CSS">CSS</span>
+        <span class="chip" title="JavaScript">JavaScript</span>
+        <span class="chip" title="Adobe Photoshop"> Adobe Photoshop</span>
+        <span class="chip" title="Adobe XD">Adobe XD</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- Story -->
+  <section id="story" class="grid">
+    <div class="card">
+      <h2>The Story</h2>
+      <p>I'm a creative and detail‑oriented UI/UX Designer with a background in Visual Communication and practical experience across web, mobile, and desktop platforms. I’ve contributed to impactful projects in banking, gaming, and branding, combining design thinking with technical skills in Figma, Framer, HTML, CSS, and JavaScript. I focus on creating user‑first, responsive interfaces that are both functional and visually engaging. With a strong foundation in research and prototyping, I aim to design experiences that are intuitive, accessible, and meaningful.</p>
+    </div>
+  </section>
+
+  <!-- Work Timeline -->
+  <section id="work" class="grid">
+    <div class="card">
+      <h2>Work Timeline</h2>
+      <div class="timeline" aria-label="Employment history timeline">
+        <div class="t-item">
+          <div class="t-role">UI/UX Designer <span class="muted">• Impacto Digifin Technologies Pvt. Ltd</span></div>
+          <div class="t-meta">Jul 2024 – Nov 2024</div>
+        </div>
+        <div class="t-item">
+          <div class="t-role">UI/UX Designer (Intern) <span class="muted">• Sirma Consulting Private Limited</span></div>
+          <div class="t-meta">Apr 2024 – Jun 2024</div>
+        </div>
+        <div class="t-item">
+          <div class="t-role">Graphic Designer (Intern) <span class="muted">• GOA Tek Company</span></div>
+          <div class="t-meta">Jan 2024 – Apr 2024</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="grid">
+    <div class="card">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="card">
+          <h3>Design Tools</h3>
+          <ul>
+            <li>Figma – UI design, prototyping, design systems</li>
+            <li>Framer – Interactive design and animation</li>
+            <li>Canva – Quick layouts and visual assets</li>
+            <li>Webwave – Website creation platform</li>
+            <li>Adobe Photoshop – Visual editing and branding</li>
+            <li>Visual Studio Code – Front‑end development & code editing</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>UX & UI Design</h3>
+          <ul>
+            <li>User Research & Persona Creation</li>
+            <li>Wireframing & Prototyping</li>
+            <li>Responsive Design & Mobile‑first Approach</li>
+            <li>UX Testing & Feedback Loops</li>
+            <li>Journey Mapping & Empathy Mapping</li>
+            <li>Competitive Analysis</li>
+            <li>Problem Solving & Critical Thinking</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Web & Front‑end</h3>
+          <ul>
+            <li>HTML – Semantic structure & layout</li>
+            <li>CSS – Responsive styling (Flexbox, Grid)</li>
+            <li>JavaScript – Interactivity, DOM manipulation</li>
+            <li>Basic knowledge of front‑end development workflow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="grid">
+    <div class="card">
+      <h2>Services</h2>
+      <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="card">
+          <h3>UI/UX Design</h3>
+          <p>End‑to‑end interface design for web, mobile, and desktop platforms. User flow planning, wireframing, and high‑fidelity prototyping. Design systems and UI component creation.</p>
+        </div>
+        <div class="card">
+          <h3>User Research & Testing</h3>
+          <p>Interviews, surveys, usability tests. Personas, journey & empathy maps. Iterative design based on feedback and analytics.</p>
+        </div>
+        <div class="card">
+          <h3>Mobile App Design</h3>
+          <p>Native & hybrid design for iOS & Android with focus on intuitive navigation, responsive layouts, and accessibility.</p>
+        </div>
+        <div class="card">
+          <h3>Web Design & Development</h3>
+          <p>Landing pages, business websites, admin panels. Front‑end using HTML, CSS, JS. Experience with WebWave, VS Code & responsive frameworks.</p>
+        </div>
+        <div class="card">
+          <h3>Product & Branding</h3>
+          <p>Logo design, brand identity, visual guidelines, and style guides. Collaboration with marketing for cohesive delivery.</p>
+        </div>
+        <div class="card">
+          <h3>Prototyping & Collaboration</h3>
+          <p>Interactive prototypes in Figma & Framer. Cross‑functional teamwork with developers & stakeholders. Agile handoff.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What I've Done (Projects) -->
+  <section id="projects" class="grid">
+    <div class="card">
+      <h2>What I’ve Done</h2>
+      <p class="muted">Here’s a selection of my projects to showcase.</p>
+      <div class="projects">
+        <article class="project">
+          <a href="https://www.behance.net/gallery/215948905/UI-design-SmartCart-(Food-Value)" target="_blank" rel="noreferrer noopener">
+            <img src="Frame 2860.png" alt="Mobile application mockup"/>
+            <div class="p-info">Mobile Application - Save Food</div>
+          </a>
+        </article>
+        <article class="project">
+          <a href="https://www.behance.net/gallery/232221307/Fintness" target="_blank" rel="noreferrer noopener">
+            <img src="Frame 39890.png" alt="Mobile app onboarding screens"/>
+            <div class="p-info">Mobile Application - Fitness onboarding</div>
+          </a>
+        </article>
+        <article class="project">
+          <a href="https://www.behance.net/gallery/217647819/Theme-Park" target="_blank" rel="noreferrer noopener">
+            <img src="Desktop - 1 1.png" alt="Mobile app dashboard"/>
+            <div class="p-info">Mobile Application - Theme Park </div>
+          </a>
+        </article>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="grid">
+    <div class="card">
+      <h2>Get in Touch</h2>
+      <form id="contactForm" aria-label="Contact form">
+        
+        <div class="row">
+            <label>
+            <span class="sr-only">E-mail ID</span>
+            <input id="E-mail ID" name="E-mail ID" type="text" placeholder="E-mail ID" required autocomplete="E-mail ID" required>
+          </label>
+          <label>
+            <span class="sr-only">Phone</span>
+            <input id="phone" name="phone" type="tel" placeholder="Phone number" required autocomplete="91520 22355" required>
+          </label>
+        </div>
+        <label>
+          <span class="sr-only">Message</span>
+          <textarea id="message" name="message" placeholder="Get in Touch" required></textarea>
+        </label>
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+          <button class="btn btn-primary" type="submit">Send email</button>
+        </div>
+      </form>
+
+      <div style="margin-top:16px">
+        <p class="muted">Prefer direct contact?</p>
+        <p>Email: sathyadesign8@gmail.com
+        <br> Phone:91501 11705</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <small>© <span id="year"></span> Sathya Jayaprakash</small>
+  <!-- Social links -->
+  <div class="social" style="margin-top:18px; display:flex; gap:18px; justify-content:center;">
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/sathya-jayaprakash-22868a295/" target="_blank" aria-label="LinkedIn">
+      <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.1c.5-1 1.9-2.2 4-2.2 4.3 0 5.1 2.8 5.1 6.4V24h-4v-7.8c0-1.9 0-4.3-2.6-4.3s-3 2-3 4.1V24h-4V8z"/>
+      </svg>
+    </a>
+    <!-- Behance -->
+    <a href="https://www.behance.net/designersathya1" target="_blank" aria-label="Behance">
+      <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M7.2 11.3c.9-.4 1.5-1.2 1.5-2.3 0-2-1.5-3-3.9-3H0v11.9h5.1c2.6 0 4.2-1.2 4.2-3.4 0-1.5-.7-2.5-2.1-3.2zm-3.9-3.7h2.1c1 0 1.6.5 1.6 1.3s-.6 1.3-1.7 1.3H3.3V7.6zm2.3 7.9H3.3v-2.8h2.2c1.3 0 2 .6 2 1.4s-.7 1.4-1.9 1.4zm12.4-7.9c-3 0-4.9 2.1-4.9 5.2 0 3.3 2 5.2 5.1 5.2 2.1 0 3.6-.9 4.4-2.6h-2.4c-.3.5-1 1-2 1-1.2 0-2.1-.8-2.2-2.1h6.8c.1-.3.1-.7.1-1 0-2.4-1.5-5-4.9-5zm-2.2 4.1c.2-1.2 1-1.9 2.1-1.9 1.2 0 1.9.8 2 1.9h-4.1zM24 6.3h-6.1v1.5H24V6.3z"/>
+      </svg>
+    </a>
+    <!-- GitHub -->
+    <a href="https://github.com/sathyajayaprakash2002" target="_blank" aria-label="GitHub">
+      <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.78-1.34-1.78-1.1-.75.08-.74.08-.74 1.22.09 1.87 1.26 1.87 1.26 1.08 1.86 2.84 1.32 3.53 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.51.12-3.15 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.64.25 2.85.12 3.15.77.84 1.23 1.91 1.23 3.23 0 4.63-2.81 5.66-5.49 5.96.43.37.82 1.1.82 2.22v3.3c0 .32.22.7.82.58A12 12 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+    </a>
+    <!-- Medium -->
+    <a href="https://medium.com/@sathyadesigner8" target="_blank" aria-label="Medium">
+      <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M2 4c.7 0 1.3.4 1.6 1l5.8 9.7L14.4 5c.3-.5.9-.9 1.6-.9H22l-7.8 12.2L22 22h-6.1c-.7 0-1.3-.4-1.6-.9L8.5 10.2 2 22H0V4h2z"/>
+      </svg>
+    </a>
+  </div>
+  </footer>
+
+  <script>
+    // Smoothly highlight active nav link on scroll
+    const sections = ['start','story','work','skills','services','projects','contact'];
+    const navLinks = document.querySelectorAll('.nav-link');
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        const id = entry.target.id;
+        const link = document.querySelector(`a[href="#${id}"]`);
+        if(entry.isIntersecting){
+          navLinks.forEach(a=>a.classList.remove('active'));
+          if(link) link.classList.add('active');
+        }
+      })
+    },{rootMargin:'-40% 0px -55% 0px', threshold:[0,1]});
+    sections.forEach(id=>{const el = document.getElementById(id); if(el) observer.observe(el)});
+
+    // Copy email helper
+    const EMAIL = 'sathyadesign8@gmail.com';
+    document.getElementById('copyEmailBtn').addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(EMAIL); toast('Email copied ✔'); }
+      catch{ toast('Could not copy.'); }
+    });
+
+    // Mailto composer for the contact form so you receive emails directly
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const body = `Hi Sathya,%0D%0A%0D%0A${message}%0D%0A%0D%0A— ${name}%0D%0AEmail: ${email}%0D%0APhone: ${phone}`;
+      const mailto = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      window.location.href = mailto; // opens user's email app
+      toast('Opening your mail app…');
+      form.reset();
+    });
+
+    // Lightweight toast
+    function toast(text){
+      const t = document.createElement('div');
+      t.textContent = text; 
+      t.style.position='fixed'; t.style.bottom='24px'; t.style.left='50%'; t.style.transform='translateX(-50%)';
+      t.style.padding='10px 14px'; t.style.borderRadius='12px'; t.style.background='rgba(0,0,0,.75)'; t.style.color='#fff'; t.style.fontWeight='700'; t.style.zIndex='1000';
+      document.body.appendChild(t);
+      setTimeout(()=>{t.style.transition='opacity .5s'; t.style.opacity='0'; setTimeout(()=>t.remove(),600)}, 1600);
+    }
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
